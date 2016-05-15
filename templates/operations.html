@@ -1,0 +1,382 @@
+
+<p>Select your action:</p>
+	<div class="">
+		<label><input id='addDim' type='radio' name='action' value='addDim' onclick='displayOption()'>Add Dimension</label>
+		<label><input id='removeDim' type='radio' name='action' value='removeDim' onclick='displayOption()'>Remove Dimension</label>
+		<label><input id='rollup' type='radio' name='action' value='rollup' onclick='displayOption()'>Roll Up</label>
+		<label><input id='drilldown' type='radio' name='action' value='drilldown' onclick='displayOption()'>Drill Down</label>
+		<label><input id='slice' type='radio' name='action' value='slice' onclick='displayOption()'>Slice</label>
+		<label><input id='dice' type='radio' name='action' value='dice' onclick='displayOption()'>Dice</label>
+	</div>
+
+	<div id='addDimOption' style='display:none;'>
+		<p>Choose a dimension:</p>
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Product" type="radio" name="dimension" value="Product" onclick="add_dim('productAttr');update('productAttr','storeAttr','timeAttr',0);">Product 
+				</label>
+			</div>
+
+			<select class="form-control" class="productAttr" name="productAttr" style='display:none;'>
+				<option value="description">description</option>
+				<option value="brand">Brand</option>
+				<option value="subcategory">Subcategory</option>
+				<option value="category">Category</option>
+				<option value="department">Department</option>
+			</select>
+		</div>
+		
+		
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Store" type="radio" name="dimension" value="Store" onclick="add_dim('storeAttr');update('storeAttr','productAttr','timeAttr',0)">Store 
+				</label>
+			</div>
+
+			<select class="form-control" class="storeAttr" name="storeAttr" style='display:none;'>
+				<option value="store_number">Store Number</option>
+				<option value="street_address">Street Address</option>
+				<option value="city">City</option>
+				<option value="county">County</option>
+				<option value="state">State</option>
+				<option value="zip">Zipcode</option>
+				<option value="district">District</option>
+				<option value="region">Region</option>
+			</select>
+
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Time" type="radio" name="dimension" value="Time" onclick="add_dim('timeAttr');update('timeAttr','storeAttr','productAttr',0)">Time
+				</label>
+			</div>
+
+			<select class="form-control" class="timeAttr" name="timeAttr" style='display:none;'>
+				<option value="date">Date</option>
+				<option value="day_of_week">Date of Week</option>
+				<option value="day_number_in_month">Day Number in Month</option>
+				<option value="month">Month</option>
+				<option value="quarter">Quarter</option>
+				<option value="fiscal_period">Fiscal Period</option>
+				<option value="year">Year</option>
+			</select>
+
+		</div>
+	</div>
+	
+	<div id='removeDimOption' style='display:none;'>
+		<p>Choose a dimension:</p>
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Product" type="radio" name="dimension" value="Product" onclick="update('productAttr','storeAttr','timeAttr',1);">Product 
+				</label>
+			</div>
+
+			<select class="form-control" class="productAttr" name="productAttr" style='display:none;'>
+				<option value="description">description</option>
+				<option value="brand">Brand</option>
+				<option value="subcategory">Subcategory</option>
+				<option value="category">Category</option>
+				<option value="department">Department</option>
+			</select>
+		
+		</div>
+		
+		
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Store" type="radio" name="dimension" value="Store" onclick="update('storeAttr','productAttr','timeAttr',1)">Store 
+				</label>
+			</div>
+
+			<select class="form-control" class="storeAttr" name="storeAttr" style='display:none;'>
+				<option value="store_number">Store Number</option>
+				<option value="street_address">Street Address</option>
+				<option value="city">City</option>
+				<option value="county">County</option>
+				<option value="state">State</option>
+				<option value="zip">Zipcode</option>
+				<option value="district">District</option>
+				<option value="region">Region</option>
+			</select>
+
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Time" type="radio" name="dimension" value="Time" onclick="update('timeAttr','storeAttr','productAttr',1)">Time
+				</label>
+			</div>
+
+			<select class="form-control" class="timeAttr" name="timeAttr" style='display:none;'>
+				<option value="date">Date</option>
+				<option value="day_of_week">Date of Week</option>
+				<option value="day_number_in_month">Day Number in Month</option>
+				<option value="month">Month</option>
+				<option value="quarter">Quarter</option>
+				<option value="fiscal_period">Fiscal Period</option>
+				<option value="year">Year</option>
+			</select>
+
+		</div>
+	</div>
+	
+	<div id='rollupOption' style='display:none;'>
+		<p>Choose a dimension:</p>
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Product" type="radio" name="dimension" value="Product" onclick="roll_up('productAttr');update('productAttr','storeAttr','timeAttr',2);">Product 
+				</label>
+			</div>
+
+			<select class="form-control" class="productAttr" name="productAttr" style='display:none;'>
+				<option value="description">description</option>
+				<option value="brand">Brand</option>
+				<option value="subcategory">Subcategory</option>
+				<option value="category">Category</option>
+				<option value="department">Department</option>
+			</select>
+		
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Store" type="radio" name="dimension" value="Store" onclick="roll_up('storeAttr');update('storeAttr','productAttr','timeAttr',2)">Store 
+				</label>
+			</div>
+
+			<select class="form-control" class="storeAttr" name="storeAttr" style='display:none;'>
+				<option value="store_number">Store Number</option>
+				<option value="street_address">Street Address</option>
+				<option value="city">City</option>
+				<option value="county">County</option>
+				<option value="state">State</option>
+				<option value="zip">Zipcode</option>
+				<option value="district">District</option>
+				<option value="region">Region</option>
+			</select>
+
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Time" type="radio" name="dimension" value="Time" onclick="roll_up('timeAttr');update('timeAttr','storeAttr','productAttr',2)">Time
+				</label>
+			</div>
+
+			<select class="form-control" class="timeAttr" name="timeAttr" style='display:none;'>
+				<option value="date">Date</option>
+				<option value="day_of_week">Date of Week</option>
+				<option value="day_number_in_month">Day Number in Month</option>
+				<option value="month">Month</option>
+				<option value="quarter">Quarter</option>
+				<option value="fiscal_period">Fiscal Period</option>
+				<option value="year">Year</option>
+			</select>
+
+		</div>
+
+	</div>
+	
+	<div id='drilldownOption' style='display:none;'>
+		<p>Choose a dimension:</p>
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Product" type="radio" name="dimension" value="Product" onclick="drill_down('productAttr');update('productAttr','storeAttr','timeAttr',3);">Product 
+				</label>
+			</div>
+
+			<select class="form-control" class="productAttr" name="productAttr"  style='display:none;'>
+				<option value="description">description</option>
+				<option value="brand">Brand</option>
+				<option value="subcategory">Subcategory</option>
+				<option value="category">Category</option>
+				<option value="department">Department</option>
+			</select>
+		
+		</div>
+		
+		
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Store" type="radio" name="dimension" value="Store" onclick="drill_down('storeAttr');update('storeAttr','productAttr','timeAttr',3)">Store 
+				</label>
+			</div>
+
+			<select class="form-control" class="storeAttr" name="storeAttr" style='display:none;'>
+				<option value="store_number">Store Number</option>
+				<option value="street_address">Street Address</option>
+				<option value="city">City</option>
+				<option value="county">County</option>
+				<option value="state">State</option>
+				<option value="zip">Zipcode</option>
+				<option value="district">District</option>
+				<option value="region">Region</option>
+			</select>
+
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Time" type="radio" name="dimension" value="Time" onclick="drill_down('timeAttr');update('timeAttr','storeAttr','productAttr',3)">Time
+				</label>
+			</div>
+
+			<select class="form-control" class="timeAttr" name="timeAttr" style='display:none;'>
+				<option value="date">Date</option>
+				<option value="day_of_week">Date of Week</option>
+				<option value="day_number_in_month">Day Number in Month</option>
+				<option value="month">Month</option>
+				<option value="quarter">Quarter</option>
+				<option value="fiscal_period">Fiscal Period</option>
+				<option value="year">Year</option>
+			</select>
+
+		</div>
+
+	</div>
+	
+	<div id='sliceOption' style='display:none;'>
+		<p>Choose a dimension:</p>
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Product" type="radio" name="dimension" value="Product" onclick="slice('productAttr');update('productAttr','storeAttr','timeAttr',4);">Product 
+				</label>
+			</div>
+
+			<select class="form-control" class="productAttr" name="productAttr" style='display:none;'>
+				<option value="description">description</option>
+				<option value="brand">Brand</option>
+				<option value="subcategory">Subcategory</option>
+				<option value="category">Category</option>
+				<option value="department">Department</option>
+			</select>
+			<p>Enter value: <input id="productAttr0" style='display:none;' type="text" name="productAttr0"></p>
+		</div>
+		
+		
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Store" type="radio" name="dimension" value="Store" onclick="slice('storeAttr');update('storeAttr','productAttr','timeAttr',4)">Store 
+				</label>
+			</div>
+
+			<select class="form-control" class="storeAttr" name="storeAttr" style='display:none;'>
+				<option value="store_number">Store Number</option>
+				<option value="street_address">Street Address</option>
+				<option value="city">City</option>
+				<option value="county">County</option>
+				<option value="state">State</option>
+				<option value="zip">Zipcode</option>
+				<option value="district">District</option>
+				<option value="region">Region</option>
+			</select>
+			<p>Enter value: <input id="storeAttr0" style='display:none;' type="text" name="storeAttr0"></p>
+
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="radio">
+				<label>
+				<input id="Time" type="radio" name="dimension" value="Time" onclick="slice('timeAttr');update('timeAttr','storeAttr','productAttr',4)">Time
+				</label>
+			</div>
+
+			<select class="form-control" class="timeAttr" name="timeAttr" style='display:none;'>
+				<option value="date">Date</option>
+				<option value="day_of_week">Date of Week</option>
+				<option value="day_number_in_month">Day Number in Month</option>
+				<option value="month">Month</option>
+				<option value="quarter">Quarter</option>
+				<option value="fiscal_period">Fiscal Period</option>
+				<option value="year">Year</option>
+			</select>
+			<p >Enter value: <input id="timeAttr0" style='display:none;' type="text" name="timeAttr0"></p> 
+			
+		</div>
+	</div>
+	
+	<div id='diceOption' style='display:none;'> 
+		 <p>Choose a dimension:</p>
+		<div class="col-xs-2">
+			<div class="checkbox">
+				<label>
+				<input id="product_box" type="checkbox" name="dimension" value="Product" onclick="dice('productAttr')">Product 
+				</label>
+			</div>
+
+			<select class="form-control" class="productAttr" id="_product" name="productAttr">
+				<option value="description">description</option>
+				<option value="brand">Brand</option>
+				<option value="subcategory">Subcategory</option>
+				<option value="category">Category</option>
+				<option value="department">Department</option>
+			</select>
+			<p>Enter value1: <input id="productAttr1" name="productAttr1" style='display:block;' type="text">
+			Enter value2: <input id="productAttr2" name="productAttr2" style='display:block;' type="text"></p>
+		</div>
+		
+		
+		<div class="col-xs-2">
+			<div class="checkbox">
+				<label>
+				<input id="store_box" type="checkbox" name="dimension" value="Store" onclick="dice('storeAttr')">Store 
+				</label>
+			</div>
+
+			<select class="form-control" class="storeAttr" id="_store" name="storeAttr">
+				<option value="store_number">Store Number</option>
+				<option value="street_address">Street Address</option>
+				<option value="city">City</option>
+				<option value="county">County</option>
+				<option value="state">State</option>
+				<option value="zip">Zipcode</option>
+				<option value="district">District</option>
+				<option value="region">Region</option>
+			</select>
+			<p>Enter value1: <input id="storeAttr1" name="storeAttr1" style='display:block;' type="text">
+			Enter value2: <input id="storeAttr2" name="storeAttr2" style='display:block;' type="text"></p>
+
+		</div>
+			
+		<div class="col-xs-2">
+			<div class="checkbox">
+				<label>
+				<input id="time_box" type="checkbox" name="dimension" value="Time" onclick="dice('timeAttr')">Time
+				</label>
+			</div>
+
+			<select class="form-control" class="timeAttr" id="_time" name="timeAttr">
+				<option value="date">Date</option>
+				<option value="day_of_week">Date of Week</option>
+				<option value="day_number_in_month">Day Number in Month</option>
+				<option value="month">Month</option>
+				<option value="quarter">Quarter</option>
+				<option value="fiscal_period">Fiscal Period</option>
+				<option value="year">Year</option>
+			</select>
+			<p>Enter value1: <input id="timeAttr1" name="timeAttr1" style='display:block;' type="text">
+			Enter value2: <input id="timeAttr2" name="timeAttr2" style='display:block;' type="text"></p> 
+			
+		</div>
+	</div> 
+	
+<input type="submit" id="submit" value="Submit" class="btn btn-info">
+
+
+			
